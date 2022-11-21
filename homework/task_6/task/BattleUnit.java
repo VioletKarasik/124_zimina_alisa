@@ -3,7 +3,7 @@ package task;
 public class BattleUnit {
     //конструкторы
     private int Strength, Armor, Health, X, Y;
-    public BattleUnit(int Sstrength, int Armor, int Health, int X, int Y) {
+    public BattleUnit(int Strength, int Armor, int Health, int X, int Y) {
         this.Strength = Strength;
         this.Armor = Armor;
         this.Health = Health;
@@ -28,37 +28,35 @@ public class BattleUnit {
         return Health;
     }
     //движение
-    public void moveUp() {
-        Y -= 1;
-    }
-    public void moveDown() {
-        Y += 1;
-    }
-    public void moveLeft() {
-        X -= 1;
-    }
-    public void moveRight() {
-        X += 1;
-    }
-    public boolean isAlive() {
-        if (Health>0) {
-            return true;
-        }
-        return false;
+    public void moveUp(){
+        Y--;
     }
 
+    public void moveDown(){
+        Y++;
+    }
+
+    public void moveLeft(){
+        X--;
+    }
+    public void moveRight(){
+        X++;
+    }
+    public  boolean isAlive(){
+        return Health>0;
+    }
     //атака
     private int uron;
-    public void attacked(BattleUnit enemy) {
-        if (Armor>0 && Health>0) {
+    public void attacked(BattleUnit enemy){
+        if (Armor>0) {
             if (enemy.Strength >= Armor) {
                 uron = enemy.Strength - Armor;
                 Health -= uron;
             } else {
                 Health = Health;
             }
-        } else {
-            Health -= enemy.Strength;
         }
+        else {
+            Health -= enemy.Strength;}
     }
 }
