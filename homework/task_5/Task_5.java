@@ -22,7 +22,16 @@ public class Task_5 implements Task_5_base {
         // сгенерировать и вернуть список размера size,
         // содержащий первые size элементов последовательности, описанной в
         // задаче subtask_2_for задания task_3
-        return null;
+        ArrayList<Integer> spisok = new ArrayList<>();
+        for(int i=1;i<=size;i++){
+            int j=0;
+            if(spisok.size()<size)
+                while(j<i && spisok.size()<size) {
+                    spisok.add(i);
+                    j++;
+                }
+        }
+        return spisok;
     }
 
     @Override
@@ -55,14 +64,45 @@ public class Task_5 implements Task_5_base {
     public HashSet<Integer> subtask_6_HashSet(HashSet<Integer> s1, HashSet<Integer> s2) {
         // постройте множество, содержащее элементы, содержащиеся либо только в s1,
         // либо только в s2, но не в обоих множествах одновременно
-        return null;
+        HashSet<Integer> mnozhestvo = new HashSet<>();
+        for(Integer i:s1) {
+            if (s2.contains(i)) {
+                continue;
+            } else {
+                mnozhestvo.add(i);
+            }
+        }
+        for(Integer i:s2) {
+            if (s1.contains(i)) {
+                continue;
+            } else {
+                mnozhestvo.add(i);
+            }
+        }
+        return mnozhestvo;
     }
 
     @Override
     public HashMap<String, Double> subtask_7_HashMap(ArrayList<String> data) {
         // Дан список строк. Построить словарь, содержащий частоты слов
         // для данного списка в процентах
-        return null;
+        HashMap<String, Double> slovar = new HashMap<>();
+        int k = 0;
+        for(String i:data){
+            String[] slova = i.split(" ");
+            for(String j :slova){
+                if(slovar.containsKey(j)) {
+                    slovar.put(j,slovar.get(j)+1);
+                } else
+                    slovar.put(j, 1.0);
+                k++;
+            }
+        }
+        for(HashMap.Entry <String, Double> vvod:slovar.entrySet()){
+            double pr = (vvod.getValue()*100)/k;
+            vvod.setValue(pr);
+        }
+        return slovar;
     }
 
     @Override
@@ -70,6 +110,19 @@ public class Task_5 implements Task_5_base {
         // Дан список чисел. Сформировать словарь, содержащий среднее,
         // максимальное и минимальное значения из данного списка. Ключи
         // словаря "mean", "max", "min" соответственно
-        return null;
+        double max = Integer.MIN_VALUE, min = Integer.MAX_VALUE, summa = 0;
+        for(Double i : data){
+            summa += i;
+            if(i>max) {
+                max = i;
+            } if(i<min) {
+                min = i;
+            }
+        }
+        HashMap<String, Double> slovar = new HashMap<>();
+        slovar.put("mean", summa/data.size());
+        slovar.put("max", max);
+        slovar.put("min", min);
+        return slovar;
     }
 }
