@@ -9,23 +9,15 @@ public class Alchemist extends BattleUnitBase {
     public void specialAbility(BattleUnit[] ownTeam, BattleUnit[] enemyTeam) {
         int maximhealth = 0;
         int minimhealth = Integer.MAX_VALUE;
-        int k = 0;
-        int m = 0;
         for (int i = 0; i < ownTeam.length; i++){
             BattleUnit own = ownTeam[i];
             if ((own.health()>maximhealth) && (own.health()>0)){
                 maximhealth = own.health();
-                k = i;
             }
             if ((own.health()<maximhealth) && (own.health()>0)){
                 maximhealth = own.health();
-                m = i;
             }
         }
-        final BattleUnit ownMaxHealth = ownTeam[k];
-        final BattleUnit ownMinHealth = ownTeam[m];
-        ownMinHealth.heal(10);
-        ownMaxHealth.setStrength(ownMaxHealth.strength() + 1);
     }
 
     @Override
