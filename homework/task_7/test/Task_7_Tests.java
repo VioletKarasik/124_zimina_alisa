@@ -232,11 +232,11 @@ public class Task_7_Tests {
 
     private static boolean testObject1(Race race) {
         return switch (race) {
-            case Orc ->      race.Strength() == 6 && race.Health() == 12 && race.Skills() == 2;
-            case Elf ->      race.Strength() == 2 && race.Health() == 9  && race.Skills() == 9;
-            case Dwarf ->    race.Strength() == 6 && race.Health() == 10 && race.Skills() == 4;
-            case Halfling -> race.Strength() == 1 && race.Health() == 8  && race.Skills() == 11;
-            case Human ->    race.Strength() == 6 && race.Health() == 7  && race.Skills() == 7;
+            case Orc ->      race.strength() == 6 && race.health() == 12 && race.dexterity() == 2;
+            case Elf ->      race.strength() == 2 && race.health() == 9  && race.dexterity() == 9;
+            case Dwarf ->    race.strength() == 6 && race.health() == 10 && race.dexterity() == 4;
+            case Halfling -> race.strength() == 1 && race.health() == 8  && race.dexterity() == 11;
+            case Human ->    race.strength() == 6 && race.health() == 7  && race.dexterity() == 7;
         };
     }
 }
