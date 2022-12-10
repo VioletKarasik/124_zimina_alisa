@@ -15,4 +15,6 @@ public interface BattleUnit {
     void damageArmor(int value);     //сбивает value едуниц брони
     int maxArmor();                  //возвращает максимальное значение брони
     void setMaxArmor(int value);     //делает значение максимальной брони равным value
+    void specialAbility(BattleUnit[] ownTeam, BattleUnit[] enemyTeam);
+    void attack(BattleUnit other);
 }
