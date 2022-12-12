@@ -1,159 +1,125 @@
 package task;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 public class WebAddressParser {
-    //конструкторы
     private String url;
-    public WebAddressParser(String url){
-        this.url = url;
+    private String scheme;
+    private String login;
+    private String password;
+    private String host;
+    private String port;
+    private String fragment;
+    private HashMap<String, String> parameters = new HashMap<>();
+
+    //конструкторы
+    public WebAddressParser(String url) {
+        parseUrl(url);
     }
 
     //методы
-    public String getLogin() {
-        if (!this.isValid()) {
-            return null;
-        }
-        int startIndex = url.indexOf("//");
-        startIndex += 2;
+    public boolean isValid() {
+        return !(scheme == null && host == null && url == null);
+    }
 
-        int endIndex = url.indexOf(":", startIndex);
-        return url.substring(startIndex, endIndex);
+    public String getLogin() {
+        if (!isValid() || login == null) {
+            return "";
+        }
+        return login;
     }
 
     public String getPassword() {
-        if (!this.isValid()) {
-            return null;
+        if (!isValid() || password == null) {
+            return "";
         }
-        int startIndex = url.indexOf("//");
-        startIndex = url.indexOf(":", startIndex);
-        startIndex ++;
-
-        int endIndex = url.indexOf("@", startIndex);
-        return url.substring(startIndex, endIndex);
+        return password;
     }
 
     public String getScheme() {
-        if (!this.isValid()) {
-            return null;
+        if (!isValid()) {
+            return "";
         }
-        int startIndex = 0;
-        int endIndex = url.indexOf(":");
-
-        return url.substring(startIndex, endIndex);
+        return scheme;
     }
 
     public String getHost() {
-        if (!this.isValid()) {
-            return null;
+        if (!isValid()) {
+            return "";
         }
-        int startIndex = url.indexOf("@");
-        startIndex++;
-
-        int endIndex = url.indexOf(":", startIndex);
-        return url.substring(startIndex, endIndex);
+        return host;
     }
 
     public String getPort() {
-        if (!this.isValid()) {
-            return null;
+        if (!isValid() || port == null) {
+            return "";
         }
-        int startIndex = url.indexOf("@");
-        startIndex = url.indexOf(":", startIndex);
-        startIndex++;
-
-        int endIndex = url.indexOf("/", startIndex);
-        return url.substring(startIndex, endIndex);
-    }
-
-    public String getFragment() {
-        if (!this.isValid()) {
-            return null;
-        }
-        int startIndex = url.indexOf("#");
-        startIndex++;
-
-        int endIndex = url.length();
-        return url.substring(startIndex, endIndex);
-    }
-
-    public boolean isValid() {
-        String[] symbols = {"://", ":", "@", ":", "/", "?", "#"};
-
-        if (url.contains(" ")) {
-            return false;
-        }
-
-        int currentIndex = 0;
-        for (String symbol : symbols) {
-            currentIndex = url.indexOf(symbol, currentIndex);
-            if (currentIndex == -1) {
-                return false;
-            }
-            currentIndex++;
-        }
-
-        return true;
-    }
-
-    public HashMap<String, String> getParameters() {
-        if (!this.isValid()) {
-            return null;
-        }
-
-        HashMap paramUrl = new HashMap<String, String>();
-
-
-        String param = this.getParam();
-
-        int startIndex = 0;
-        while(param.contains("=")) {
-            int endIndex = param.indexOf("=", startIndex);
-            String key = param.substring(startIndex, endIndex);
-
-            startIndex = endIndex;
-
-            if (!param.contains("&")) {
-                endIndex = param.length();
-            }
-            else {
-                endIndex = param.indexOf("&", startIndex);
-            }
-            String value = param.substring(startIndex, endIndex);
-
-            paramUrl.put(key, value);
-        }
-        return paramUrl;
-    }
-
-    private String getParam () {
-        int startIndex = url.indexOf("?");
-        startIndex++;
-        int endIndex = url.indexOf("#", startIndex);
-        String param = url.substring(startIndex, endIndex);
-
-        return param;
-    }
-
-    private String getPath () {
-        int startIndex = url.indexOf("//");
-        startIndex += 2;
-
-        startIndex = url.indexOf("/", startIndex);
-        startIndex++;
-
-        int endIndex = url.indexOf("?", startIndex);
-        String path = url.substring(startIndex, endIndex);
-
-        return path;
+        return port;
     }
 
     public String getUrl() {
+        if (!isValid()) {
+            return "";
+        }
+        return url;
+    }
 
-        String param = this.getParam();
-        String path = this.getPath();
+    public String getFragment() {
+        if(!isValid() || fragment == null) {
+            return "";
+        }
+        return fragment;
+    }
 
-        return  this.getScheme() + "://" + this.getHost() + "/" + path + "?" + param;
+    public HashMap<String, String> getParameters() {
+        return parameters;
+    }
+
+    private void parseUrl(String inURL) {
+        if (inURL.contains("://") && inURL.contains(".")) {
+            String[] splitURL = inURL.split("://");
+            scheme = splitURL[0];
+            inURL = splitURL[1];
+            if (inURL.contains("@")) {
+                splitURL = inURL.split("@");
+                password = splitURL[0];
+                inURL = splitURL[1];
+            }
+            if (password != null) {
+                splitURL = password.split(":");
+                login = splitURL[0];
+                password = splitURL[1];
+            }
+            if (inURL.contains("/")) {
+                splitURL = inURL.split("/", 2);
+                host = splitURL[0];
+                inURL = splitURL[1];
+            }
+            if (host.contains(":")) {
+                splitURL = host.split(":");
+                port = splitURL[1];
+                host = splitURL[0];
+            }
+            if (inURL.contains("#")) {
+                splitURL = inURL.split("#");
+                fragment = splitURL[1];
+                inURL = splitURL[0];
+
+            }
+            url = inURL;
+            if (inURL.contains("?")) {
+                splitURL = inURL.split("\\?");
+                url = splitURL[0];
+                inURL = splitURL[1];
+            }
+            if (inURL.contains("=")) {
+                splitURL = inURL.split("&");
+                for (String s : splitURL) {
+                    String[] params = s.split("=");
+                    parameters.put(params[0], params[1]);
+                }
+            }
+        }
     }
 }
-
