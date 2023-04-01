@@ -5,6 +5,8 @@ def cost_n(x,y,z,cost):
         return "Alice and Charlie can afford the subscription to Netflix"
     elif (abs((z+y)-cost) < abs((x+y)-cost)) and (abs((z+y)-cost) < abs((z+x)-cost)):
         return "Charlie and Bob can afford the subscription to Netflix"
+    else:
+        return "None of them can afford the subscription"
 
 x = int(input("Enter Alice's amount of money: "))
 y = int(input("Enter Bob's amount of money: "))
