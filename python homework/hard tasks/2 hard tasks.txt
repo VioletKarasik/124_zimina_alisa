@@ -26,3 +26,6 @@
 в сложном например для Midjourney. 
 например ежедневную подборку лучших картинок midjourney из топов: https://www.midjourney.com/showcase/top/
 или добавлять бота в публичные чаты и собирать коллекции промптов других людей)
+
+сложные задачи (доп):
+https://docs.google.com/document/d/1WdEjR_JjyINQd3UEr9-XYLyeY71vOWEVGnMDavGEYpQ/edit
