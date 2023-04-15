@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": 
+    [
+        {
+            "name": "Debug3 Chrome",
+            "request": "launch",
+            "type": "chrome",
+            "url": "file:///C:/_java/jsdebug/vsbedug3/inde3.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
