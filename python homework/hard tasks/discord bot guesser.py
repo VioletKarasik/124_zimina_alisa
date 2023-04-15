@@ -16,7 +16,7 @@ async def on_message(message):
     
     if message.content.startswith('guess!'):
         number = random.randint(1,100)
-        await message.channel.send('Я загадал число, попробуй угадать!')
+        await message.channel.send('Я загадала число, попробуй угадать!')
         
         def check(msg):
             return msg.author == message.author and msg.channel == message.channel and msg.content.isdigit()
@@ -25,7 +25,7 @@ async def on_message(message):
             try:
                 guess = await client.wait_for('message', check=check, timeout=30.0)
             except:
-                await message.channel.send('Время вышло, попробуйте снова')
+                await message.channel.send('Время вышло, попробуй снова..')
                 return
             
             guess = int(guess.content)
@@ -36,7 +36,7 @@ async def on_message(message):
             else:
                 await message.channel.send(f"Ваше число больше загаданного. Попробуйте еще раз")    
             
-        await message.channel.send(f'Вы проиграли! Я загадал число {number}')
+        await message.channel.send(f'Вы проиграли! Я загадала число {number}')
 
 
 client.run("MTA5Njg4MzkyMTA4MzQ0OTQ5NA.Gp3mTi.asIuMyYvC0cs49vkeR4urMpVzGNPBTXT027cIg")
