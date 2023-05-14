@@ -1,0 +1,23 @@
+1. Create a JavaScript class called ShoppingCart.
+
+2. Give the ShoppingCart class properties for the list of items in the cart and their quantities.
+
+3. Give the ShoppingCart class methods for adding items to the cart, removing items from the cart, updating the quantity of an item, and calculating the total cost of the items in the cart.
+
+4. Test your ShoppingCart class by creating a simple HTML and JavaScript interface that allows users to add items to their cart, update the quantity of each item, and display the total cost of the items in the cart.
+
+5. Refine your application by adding features such as sorting items by category, filtering items by price, and allowing users to checkout and pay for their items.
+
+Properties that items in the ShoppingCart class could have:
+
+- name: a string representing the name of the item
+- description: a string describing the item
+- price: a number representing the price of the item
+- quantity: a number representing the quantity of the item in the cart
+
+And here are some suggested methods for the ShoppingCart class:
+
+- addItem(item): takes an item object as a parameter and adds it to the cart
+- removeItem(itemName): takes an itemName string as a parameter and removes the item with the matching name from the cart
+- updateQuantity(itemName, newQuantity): takes an itemName string and a newQuantity number as parameters and updates the quantity of the item with the matching name in the cart
+- getTotalCost(): returns the total cost of all the items in the cart, taking into account their quantities and prices.

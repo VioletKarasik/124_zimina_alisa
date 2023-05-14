@@ -1,0 +1,15 @@
+Specific tasks for each class:
+
+1. Animal - This class should have methods such as eat(), sleep(), and make_sound(). It should also have a str() method to print out information about the animal.
+
+2. Mammal - This class should have additional methods such as give_birth() and nurse_young().
+
+3. Bird - This class should have additional methods such as fly() and build_nest().
+
+4. Reptile - This class should have additional methods such as lay_eggs() and shed_skin().
+
+5. Enclosure - This class should have methods such as add_animal() and remove_animal() to manage the animals in the enclosure. It should also have a str() method to print out information about the enclosure.
+
+6. Zookeeper - This class should have methods such as feed_animals() and clean_enclosures().
+
+7. Zoo - This class should have methods such as add_enclosure(), remove_enclosure(), add_zookeeper(), and remove_zookeeper(). It should also have a str() method to print out information about the zoo.

@@ -1,0 +1,25 @@
+Study task for students in Python to use all principles of object-oriented programming:
+
+Create a program that models a zoo with different types of animals. The program should have the following classes:
+
+1. Animal - This is the base class for all animals and should have attributes such as name, age, and species.
+
+2. Mammal - This is a subclass of Animal and should have additional attributes such as fur color and number of legs.
+
+3. Bird - This is a subclass of Animal and should have additional attributes such as wing span and beak length.
+
+4. Reptile - This is a subclass of Animal and should have additional attributes such as scale color and type of venom.
+
+5. Enclosure - This class should represent the physical enclosures where the animals are kept and should have attributes such as size and temperature.
+
+6. Zookeeper - This class should represent the people who take care of the animals in the zoo and should have attributes such as name and years of experience.
+
+7. Zoo - This class should represent the overall zoo and should have attributes such as name and location. It should also have methods to add/remove animals, enclosures, and zookeepers.
+
+Your program should demonstrate the following principles of object-oriented programming:
+
+1. Inheritance - Use inheritance to create subclasses that inherit from the Animal class.
+
+2. Encapsulation - Use encapsulation to hide implementation details of each class and only expose necessary methods and attributes.
+
+3. Polymorphism - Use polymorphism to allow different types of animals to be added to the zoo and different types of enclosures to be used for different animals.

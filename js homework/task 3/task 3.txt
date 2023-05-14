@@ -1,0 +1,17 @@
+task for students to create the game "Rock Paper Scissors Lizard Spock" using JS:
+
+Task: Create a "Rock Paper Scissors Lizard Spock" Game
+
+1. Create a program that starts by displaying the game instructions and prompting the player to enter their choice of move (rock, paper, scissors, lizard, or spock).
+
+2. Create a function that generates a computer choice (also rock, paper, scissors, lizard, or spock) randomly.
+
+3. Create a function that determines the winner of the game based on the rules of "Rock Paper Scissors Lizard Spock" (e.g. rock crushes lizard, lizard poisons spock, paper disproves spock, etc.).
+
+4. Use the player and computer choices as input to the function that determines the winner, and display in HTML the result of the game (e.g. "You win!" or "Computer wins!").
+
+5. Add a feature that allows the player to play again or quit.
+
+6. Test the game by playing several rounds with different choices, and verify that the results are correct according to the game rules.
+
+7. (extra) Refine your application by adding features such as keeping score (save to json) over multiple rounds, adding more player choices, or creating a graphical interface.
